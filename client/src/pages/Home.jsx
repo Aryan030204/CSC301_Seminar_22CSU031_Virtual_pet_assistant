@@ -1,4 +1,3 @@
-import React from 'react';
 import PetForm from '../components/PetForm';
 
 const Home = () => {
