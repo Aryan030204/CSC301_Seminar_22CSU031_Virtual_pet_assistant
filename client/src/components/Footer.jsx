@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8 px-6">
+    <footer className="bg-gray-900 text-white py-8 px-6 z-10">
       {/* Horizontal Line Separator */}
       <div className="border-t border-gray-700 mb-6"></div>
 

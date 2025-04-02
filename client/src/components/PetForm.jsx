@@ -17,12 +17,10 @@ const PetForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Fetch health recommendations from The Dog API
       const response = await axios.get("https://api.thedogapi.com/v1/breeds");
       console.log(response);
       
 
-      // Find a breed based on weight
       const breed = response.data.find(
         (b) => formData.weight >= b.weight.metric.split(" - ")[0]
       );
@@ -40,7 +38,7 @@ const PetForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
+    <div className="max-w-md mx-auto p-[3rem] bg-blue-100 shadow-2xl shadow-t rounded-lg z-10">
       <h2 className="text-xl font-bold mb-4">Pet Health Form</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Pet Weight */}
@@ -50,7 +48,7 @@ const PetForm = () => {
           placeholder="Pet Weight (kg)"
           value={formData.weight}
           onChange={handleChange}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded-lg shadow-lg"
           required
         />
 
@@ -59,7 +57,7 @@ const PetForm = () => {
           name="healthIssues"
           value={formData.healthIssues}
           onChange={handleChange}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded-lg shadow-lg"
           required
         >
           <option value="">Select Health Issue</option>
@@ -72,7 +70,7 @@ const PetForm = () => {
           name="healthCharacteristics"
           value={formData.healthCharacteristics}
           onChange={handleChange}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded-lg shadow-lg"
           required
         >
           <option value="">Select Characteristics</option>
@@ -87,14 +85,14 @@ const PetForm = () => {
           placeholder="Describe Symptoms"
           value={formData.symptoms}
           onChange={handleChange}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded-lg shadow-lg"
           required
         ></textarea>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded"
+          className="w-full bg-blue-500 text-white p-2 rounded-lg shadow-lg"
         >
           Give Me Cure
         </button>
