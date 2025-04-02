@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FoodWiki = () => {
+const FoodShop = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const FoodWiki = () => {
   )
 }
 
-export default FoodWiki
+export default FoodShop

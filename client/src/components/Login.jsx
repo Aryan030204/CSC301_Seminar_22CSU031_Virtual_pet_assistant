@@ -1,13 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+    try {
+      const res = await axios.post("http://localhost:3000/api/login", {
+        email: email,
+        password: password,
+      });
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

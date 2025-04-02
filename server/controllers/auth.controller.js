@@ -1,5 +1,4 @@
 const User = require("../models/user.model");
-const bcrypt = require("bcryptjs");
 
 const login = async (req, res) => {
   try {
@@ -23,6 +22,8 @@ const login = async (req, res) => {
 
 const signup = async (req, res) => {
   try {
+    console.log("starting signup");
+    
     const { name, email, password } = req.body;
     
     const existingUser = await User.findOne({ email });

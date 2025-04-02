@@ -14,8 +14,8 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser);
 
-app.use("/api/pets", petRouter);
 app.use("/api", userRouter);
+app.use("/api/pets", petRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

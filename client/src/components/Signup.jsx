@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Name:", name, "Email:", email, "Password:", password);
+  const handleSubmit = async () => {
+    try{
+      const res = await axios.post("http://localhost:3000/api/signup", {
+        name,
+        email,
+        password
+      });
+      console.log(res);
+    }catch(err){
+      console.log(err);
+    }
   };
 
   return (
@@ -17,7 +26,7 @@ const Signup = () => {
         <div>
           <h2 className="text-4xl font-bold text-center mb-4">Sign Up</h2>
         </div>
-        <form onSubmit={handleSubmit} className="mt-[5rem]">
+        <form className="mt-[5rem]">
           <div className="mb-4">
             <label className="block text-gray-700">Name</label>
             <input
@@ -52,7 +61,7 @@ const Signup = () => {
             />
           </div>
           <button
-            type="submit"
+            onClick={() => handleSubmit()}
             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
           >
             Sign Up

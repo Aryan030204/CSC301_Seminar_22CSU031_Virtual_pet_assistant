@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-950 p-4">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-        <img src={logo} className="w-[6rem] shadow-white shad" alt="" />
+        <img src={logo} className="w-[6rem] shadow-white" alt="" />
 
         {/* Hamburger Icon for Mobile */}
         <div className="lg:hidden">
@@ -36,22 +36,19 @@ const Navbar = () => {
 
         {/* Navbar Links for Larger Screens */}
         <div className="hidden lg:flex space-x-4">
-          <a
-            href="#"
-            className="text-white hover:bg-blue-700 px-3 py-2 rounded-md"
-          >
+          <Link to={"/"} className="text-lg text-white font-semibold">
             Home
-          </a>
-          <Link to={"/dogwiki"} className="text-lg font-semibold">
+          </Link>
+          <Link to={"/dogwiki"} className="text-lg text-white font-semibold">
             DogWiki
           </Link>
-          <Link to={"/catwiki"} className="text-lg font-semibold">
+          <Link to={"/catwiki"} className="text-lg text-white font-semibold">
             CatWiki
           </Link>
-          <Link to={"/foodwiki"} className="text-lg font-semibold">
+          <Link to={"/foodwiki"} className="text-lg text-white font-semibold">
             FoodWiki
           </Link>
-          <Link to={"/login"} className="text-lg font-semibold">
+          <Link to={"/login"} className="text-lg text-white font-semibold">
             Login
           </Link>
         </div>
@@ -85,8 +82,8 @@ const Navbar = () => {
             <Link to={"/catwiki"} className="text-lg font-semibold">
               CatWiki
             </Link>
-            <Link to={"/foodwiki"} className="text-lg font-semibold">
-              FoodWiki
+            <Link to={"/foodshop"} className="text-lg font-semibold">
+              FoodShop
             </Link>
             <Link to={"/login"} className="text-lg font-semibold">
               Login
