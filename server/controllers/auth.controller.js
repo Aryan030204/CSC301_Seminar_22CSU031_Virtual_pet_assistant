@@ -16,9 +16,19 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
+    const token = await user.getJwt();
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+
     res.status(200).json({ message: "Login successful", user });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.log(err);
+    
+    res.status(500).json({ message: err });
   }
 };
 

@@ -1,9 +1,11 @@
 const { login, signup } = require("../controllers/auth.controller");
-const { getProfile } = require("../controllers/user.controller");
+const { getProfile, deleteProfile } = require("../controllers/user.controller");
+const authVerification = require("../middleware/auth.middleware");
 
 const userRouter = require("express").Router();
 
 userRouter.post("/login", login);
 userRouter.post("/signup", signup);
-userRouter.get("/profile", getProfile);
+userRouter.get("/user/:id/profile/", authVerification, getProfile);
+userRouter.delete("/user/:id/profile/", authVerification, deleteProfile);
 module.exports = userRouter;

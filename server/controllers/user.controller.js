@@ -18,4 +18,19 @@ const getProfile = async (req, res) => {
   }
 };
 
-module.exports = { getProfile };
+const deleteProfile = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+    res.status(200).json({
+      message: "Profile deleted successfully",
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Error deleting profile",
+      error: err.message,
+    });
+  }
+};
+
+module.exports = { getProfile, deleteProfile };
