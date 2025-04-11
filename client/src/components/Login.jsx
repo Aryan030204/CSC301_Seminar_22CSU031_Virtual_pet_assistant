@@ -1,20 +1,32 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import wall1 from "../assets/wall1.jpg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/login", {
-        email: email,
-        password: password,
-      });
-      console.log(res.data);
+      const res = await axios.post(
+        "http://localhost:3000/api/login",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      toast.success("login successfull !");
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (err) {
       console.log(err);
     }
@@ -22,6 +34,7 @@ const Login = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="flex items-center justify-center min-h-screen bg-gray-100 w-full">
         <img src={wall1} alt="" className="absolute z-1" />
         <div className="flex flex-col bg-white p-6 rounded-lg shadow-lg w-[30rem] h-[40rem] z-10">

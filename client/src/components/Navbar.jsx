@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import Profile from "./Profile";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const user = JSON.parse(localStorage.getItem("user"));
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -48,9 +49,13 @@ const Navbar = () => {
           <Link to={"/foodwiki"} className="text-lg text-white font-semibold">
             FoodWiki
           </Link>
-          <Link to={"/login"} className="text-lg text-white font-semibold">
-            Login
-          </Link>
+          {user ? (
+            <Profile />
+          ) : (
+            <Link to={"/login"} className="text-lg text-white font-semibold">
+              Login
+            </Link>
+          )}
         </div>
       </div>
 
@@ -85,9 +90,13 @@ const Navbar = () => {
             <Link to={"/foodshop"} className="text-lg font-semibold">
               FoodShop
             </Link>
-            <Link to={"/login"} className="text-lg font-semibold">
-              Login
-            </Link>
+            {user ? (
+              <Profile />
+            ) : (
+              <Link to={"/login"} className="text-lg text-black font-semibold">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       )}
