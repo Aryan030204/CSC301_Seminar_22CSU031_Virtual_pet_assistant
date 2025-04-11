@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import FoodShop from "./components/FoodShop";
+import PetProfiles from "./pages/PetProfiles";
+import ProfileList from "./pages/ProfileList";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/foodshop" element={<FoodShop />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/dog/profile/create" element={<PetProfiles/>} />
+          <Route path="/profiles/list" element={<ProfileList/>}/>
         </Routes>
         <Footer />
       </Router>

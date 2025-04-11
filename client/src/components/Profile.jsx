@@ -18,9 +18,9 @@ const Profile = () => {
     navigate("/");
   };
   return (
-    <div className="flex flex-col gap-2 text-lg font-bold items-center">
+    <div className="flex gap-4 items-center font-bold">
       <ToastContainer />
-      <h1 className="text-green-500">Welcome, {user.name} :)</h1>
+      <h1 className="text-green-400">Welcome, {user.name} :)</h1>
       <button
         className="bg-red-500 text-white rounded-xl w-fit p-1 text-sm"
         onClick={() => handleLogout()}

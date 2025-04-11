@@ -6,7 +6,7 @@ const dogBreeds = [
   "Golden Retriever",
   "Poodle",
   "Bulldog",
-  "Beagle",
+  "Beagle"
 ];
 
 const catBreeds = [
@@ -15,7 +15,7 @@ const catBreeds = [
   "Siamese",
   "Bengal",
   "Ragdoll",
-  "Sphynx",
+  "Sphynx"
 ];
 
 const petSchema = new mongoose.Schema(

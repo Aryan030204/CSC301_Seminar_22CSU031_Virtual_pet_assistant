@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import Profile from "./Profile";
+import DogProfileBtn from "./DogProfileBtn";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,7 +37,7 @@ const Navbar = () => {
         </div>
 
         {/* Navbar Links for Larger Screens */}
-        <div className="hidden lg:flex space-x-4">
+        <div className="hidden lg:flex space-x-4 items-center">
           <Link to={"/"} className="text-lg text-white font-semibold">
             Home
           </Link>
@@ -56,6 +57,7 @@ const Navbar = () => {
               Login
             </Link>
           )}
+          {user && <DogProfileBtn />}
         </div>
       </div>
 
@@ -97,6 +99,7 @@ const Navbar = () => {
                 Login
               </Link>
             )}
+            {user && <DogProfileBtn />}
           </div>
         </div>
       )}
