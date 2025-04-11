@@ -2,9 +2,12 @@ const Pet = require("../models/pet.model");
 
 const createProfile = async (req, res) => {
   try {
-    const [name, age, type, breed, weight, color] = req.body;
-    const newPet = await Pet({
+    const {name, age, type, breed, weight, color} = req.body;
+    console.log(req.user);
+    
+    const newPet = new Pet({
       name,
+      userId: req.user._id,
       age,
       type,
       breed,
@@ -17,6 +20,8 @@ const createProfile = async (req, res) => {
       data: newPet,
     });
   } catch (err) {
+    console.log(err);
+    
     res.status(500).json({ err: err.message });
   }
 };
@@ -24,7 +29,7 @@ const createProfile = async (req, res) => {
 const updateProfile = async (req, res) => {
   try {
     const { id } = req.params;
-    const [name, age, type, breed, weight, color] = req.body;
+    const {name, age, type, breed, weight, color} = req.body;
     const pet = await Pet.findByIdAndUpdate(
       id,
       {
@@ -49,8 +54,8 @@ const updateProfile = async (req, res) => {
 
 const deleteProfile = async (req, res) => {
   try {
-    const { id } = req.params;
-    await Pet.findByIdAndDelete(id);
+    const { _id } = req.params;
+    await Pet.findByIdAndDelete(_id);
     res.status(200).json({
       message: "Pet profile deleted successfully",
     });

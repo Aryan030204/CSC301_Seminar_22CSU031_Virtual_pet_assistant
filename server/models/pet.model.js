@@ -6,7 +6,7 @@ const dogBreeds = [
   "Golden Retriever",
   "Poodle",
   "Bulldog",
-  "Beagle"
+  "Beagle",
 ];
 
 const catBreeds = [
@@ -15,7 +15,7 @@ const catBreeds = [
   "Siamese",
   "Bengal",
   "Ragdoll",
-  "Sphynx"
+  "Sphynx",
 ];
 
 const petSchema = new mongoose.Schema(
@@ -23,6 +23,10 @@ const petSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+    },
+    userId: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
     },
     age: {
       type: Number,
@@ -54,10 +58,10 @@ const petSchema = new mongoose.Schema(
       required: true,
     },
     color: {
-        type: String,
-        enum: ["black", "white", "brown", "red", "yellow", "other"],
-        required: true,
-    }
+      type: String,
+      enum: ["black", "white", "brown", "red", "yellow", "other"],
+      required: true,
+    },
   },
   {
     timestamps: true,

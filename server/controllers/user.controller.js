@@ -1,3 +1,4 @@
+const Pet = require("../models/pet.model");
 const User = require("../models/user.model");
 
 const getProfile = async (req, res) => {
@@ -18,6 +19,22 @@ const getProfile = async (req, res) => {
   }
 };
 
+const getAllDogProfiles = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const profiles = await Pet.find({ userId: _id });
+    res.status(200).json({
+      message: "profiles fetched successfully",
+      profiles,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Error fetching dog profiles",
+      error: err.message,
+    });
+  }
+};
+
 const deleteProfile = async (req, res) => {
   try {
     const { id } = req.params;
@@ -33,4 +50,4 @@ const deleteProfile = async (req, res) => {
   }
 };
 
-module.exports = { getProfile, deleteProfile };
+module.exports = { getProfile, deleteProfile, getAllDogProfiles };
