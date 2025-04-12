@@ -9,6 +9,8 @@ import Signup from "./components/Signup";
 import FoodShop from "./components/FoodShop";
 import PetProfiles from "./pages/PetProfiles";
 import ProfileList from "./pages/ProfileList";
+import Faqs from "./pages/Faqs";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/pet/profile/create" element={<PetProfiles/>} />
           <Route path="/profiles/list" element={<ProfileList/>}/>
+          <Route path="/frequently-asked-questions" element={<Faqs/>} />
+          <Route path="/about-us" element={<About/>} />
         </Routes>
         <Footer />
       </Router>

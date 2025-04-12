@@ -20,13 +20,15 @@ const Profile = () => {
   return (
     <div className="flex gap-4 items-center font-bold">
       <ToastContainer />
-      <h1 className="text-green-400">Welcome, {user.name} :)</h1>
-      <button
-        className="bg-red-500 text-white rounded-xl w-fit p-1 text-sm"
-        onClick={() => handleLogout()}
-      >
-        Logout
-      </button>
+      <h1 className="text-orange-200 bg-blue-950 p-1 rounded-xl">Welcome, {user && user.name} :)</h1>
+      {user && (
+        <button
+          className="bg-red-500 text-white rounded-xl w-fit p-1 text-sm"
+          onClick={() => handleLogout()}
+        >
+          Logout
+        </button>
+      )}
     </div>
   );
 };

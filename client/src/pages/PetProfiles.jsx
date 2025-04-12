@@ -4,6 +4,8 @@ import catImg from "../assets/cat.jpg";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
+import dog1 from "../assets/dog1.png";
+import cat1 from "../assets/cat1.png";
 
 const PetProfiles = () => {
   const [name, setName] = useState("");
@@ -66,6 +68,10 @@ const PetProfiles = () => {
 
   return (
     <>
+    <div className="w-full flex justify-between p-1 absolute top-[27rem]">
+      <img src={dog1} className="relative z-[-1] right-[10rem] w-[50rem]" />
+      <img src={cat1} className="relative z-[-1] left-1 bottom-32 h-[47rem] w-[35rem]" />
+    </div>
       <form
         onSubmit={handleSubmit}
         className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4 md:mt-10 mt-6 w-[90%]"
@@ -171,13 +177,13 @@ const PetProfiles = () => {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition"
+          className="bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition place-self-center"
           onClick={() => handleCreate()}
         >
           Create
         </button>
       </form>
-      <button className="bg-red-500 w-fit rounded-lg place-self-center m-4 p-2 font-bold text-white">
+      <button className="bg-red-500 relative z-1 w-fit rounded-lg place-self-center m-4 p-2 font-bold text-white">
         <Link to={"/profiles/list"}>Show All Profiles</Link>
       </button>
     </>

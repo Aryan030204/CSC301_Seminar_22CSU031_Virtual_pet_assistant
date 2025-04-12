@@ -12,9 +12,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-950 p-4 z-10">
+    <nav className="bg-green-500 p-4 z-10">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-        <img src={logo} className="w-[6rem] shadow-white" alt="" />
+        <img src={logo} className="w-[7rem] shadow-white" alt="" />
 
         {/* Hamburger Icon for Mobile */}
         <div className="lg:hidden">
@@ -47,8 +47,11 @@ const Navbar = () => {
           <Link to={"/catwiki"} className="text-lg text-white font-semibold">
             CatWiki
           </Link>
-          <Link to={"/foodwiki"} className="text-lg text-white font-semibold">
-            FoodWiki
+          <Link to={"/frequently-asked-questions"} className="text-lg text-white font-semibold">
+            FAQs
+          </Link>
+          <Link to={"/about-us"} className="text-lg text-white font-semibold">
+            About us
           </Link>
           {user ? (
             <Profile />
