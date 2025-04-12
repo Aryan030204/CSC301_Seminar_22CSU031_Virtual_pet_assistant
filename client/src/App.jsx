@@ -22,7 +22,7 @@ function App() {
           <Route path="/foodshop" element={<FoodShop />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
-          <Route path="/dog/profile/create" element={<PetProfiles/>} />
+          <Route path="/pet/profile/create" element={<PetProfiles/>} />
           <Route path="/profiles/list" element={<ProfileList/>}/>
         </Routes>
         <Footer />

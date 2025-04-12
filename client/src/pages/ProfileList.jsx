@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import dogImg from "../assets/dog.jpg";
 import catImg from "../assets/cat.jpg";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { Pencil } from "lucide-react";
 
@@ -24,6 +25,18 @@ const ProfileList = () => {
   useEffect(() => {
     getDogProfiles();
   }, []);
+
+
+  if (profiles.length == 0) {
+    return (
+      <>
+        <h1 className="place-self-center">
+          No profiles created yet...{" "}
+          <Link to={"/pet/profile/create"} className="text-blue-500 hover:underline">Create one here</Link>
+        </h1>
+      </>
+    );
+  }
   return (
     <div className="flex flex-col items-center gap-4">
       {profiles.map((i, index) => {
