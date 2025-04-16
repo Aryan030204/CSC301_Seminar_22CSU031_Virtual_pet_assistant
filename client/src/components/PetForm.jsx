@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import { GoogleGenAI } from "@google/genai";
+import { GEMINI_API_KEY } from "../utils/constants";
 
 const PetForm = () => {
   const [formData, setFormData] = useState({
@@ -14,23 +16,39 @@ const PetForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const GenerateCure = async () => {
+    const model = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+    switch (formData.healthCharacteristics) {
+      case "Healthy":
+        { const res1 = await model.models.generateContent({
+          model: "gemini-2.0-flash",
+          contents: `My pet is ${formData.weight} and ${formData.healthCharacteristics}, but facing ${formData.healthIssues}. the symtoms observed are ${formData.symptoms}. give me home or veteranian cure in 5 short keypoints(upto 40-50 words)`,
+        });
+        setRecommendation(res1.text);
+        break; }
+
+      case "Sick":
+        { const res2 = await model.models.generateContent({
+          model: "gemini-2.0-flash",
+          contents: `My pet is ${formData.weight} and feeling ${formData.healthCharacteristics} and facing ${formData.healthIssues}. the symtoms observed are ${formData.symptoms}. give me home or veteranian cure in 5 short keypoints(upto 40-50 words)`,
+        });
+        setRecommendation(res2.text);
+        break; }
+
+      case "Recovering":
+        { const res3 = await model.models.generateContent({
+          model: "gemini-2.0-flash",
+          contents: `My pet is ${formData.weight} and currently ${formData.healthCharacteristics} from ${formData.healthIssues}. give me home or veteranian tips in 5 short keypoints (upto 40-50 words) to make the process faster`,
+        });
+        setRecommendation(res3.text);
+        break; }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("https://api.thedogapi.com/v1/breeds");
-      console.log(response);
-      
-
-      const breed = response.data.find(
-        (b) => formData.weight >= b.weight.metric.split(" - ")[0]
-      );
-
-      let healthAdvice = "No specific advice found.";
-      if (breed) {
-        healthAdvice = `This breed may face issues like ${breed.temperament}. Ensure proper nutrition and vet visits.`;
-      }
-
-      setRecommendation(healthAdvice);
+      await GenerateCure();
     } catch (error) {
       console.error("Error fetching recommendations", error);
       setRecommendation("Could not fetch recommendations. Please try again.");
