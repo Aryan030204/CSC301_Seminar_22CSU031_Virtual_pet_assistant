@@ -11,7 +11,7 @@ import PetProfiles from "./pages/PetProfiles";
 import ProfileList from "./pages/ProfileList";
 import Faqs from "./pages/Faqs";
 import About from "./pages/About";
-import Vet from "./components/Vet";
+import Vet from "./pages/Vet";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route path="/profiles/list" element={<ProfileList />} />
           <Route path="/frequently-asked-questions" element={<Faqs />} />
           <Route path="/about-us" element={<About />} />
-          <Route path="/hire-a-vit" element={<Vet />} />
+          <Route path="/hire-a-vet" element={<Vet />} />
         </Routes>
         <Footer />
       </Router>
