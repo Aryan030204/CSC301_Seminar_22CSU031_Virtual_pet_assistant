@@ -69,8 +69,8 @@ const PetProfiles = () => {
   return (
     <>
     <div className="w-full flex justify-between p-1 absolute top-[27rem]">
-      <img src={dog1} className="relative z-[-1] right-[10rem] w-[50rem]" />
-      <img src={cat1} className="relative z-[-1] left-1 bottom-32 h-[47rem] w-[35rem]" />
+      {/* <img src={dog1} className="relative z-[-1] right-[10rem] w-[50rem]" /> */}
+      {/* <img src={cat1} className="relative z-[-1] left-1 bottom-32 h-[47rem] w-[35rem]" /> */}
     </div>
       <form
         onSubmit={handleSubmit}

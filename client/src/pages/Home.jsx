@@ -1,14 +1,45 @@
-import PetForm from '../components/PetForm';
+import PetForm from "../components/PetForm";
 import wall1 from "../assets/wall1.jpg";
+import { Cat, Dog } from "lucide-react";
+import { useState } from "react";
 
 const Home = () => {
-    return (
-        <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center relative">
-            <img src={wall1} className='z-1 absolute' />
-            <h1 className="text-4xl font-bold text-blue-600 mb-6 z-10">Pet Care Advisor</h1>
-            <PetForm />
+  const [cure, setCure] = useState("");
+
+  return (
+    <>
+      <img
+        src={wall1}
+        alt="wallpaper"
+        className="w-screen h-[50rem] absolute -z-1 object-cover"
+      />
+      <div className="relative z-1 flex flex-col gap-16 p-10 items-center w-screen h-full">
+        <div className="flex w-full h-fit justify-center items-center gap-2">
+          <Cat color="red" size={40} />
+          <h1 className="text-4xl font-bold text-blue-500">
+            YOUR AI PET COMPANION
+          </h1>
+          <Dog color="green" size={40} />
         </div>
-    );
+        <div className="flex justify-evenly gap-[4rem] items-center">
+          {/* Pass setCure to PetForm */}
+          <PetForm setCure={setCure} />
+
+          <div className="flex flex-col w-[40rem] min-h-[20rem] p-10 items-start justify-center relative z-2 bg-white shadow-2xl rounded-xl overflow-auto">
+            {cure ? (
+              <ol className="list-decimal list-inside space-y-2 text-lg font-medium text-gray-700">
+                {cure.split("*")}
+              </ol>
+            ) : (
+              <h1 className="text-lg font-semibold text-gray-500">
+                Cure will appear here...
+              </h1>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Home;
