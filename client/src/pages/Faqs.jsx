@@ -42,17 +42,17 @@ const Faqs = () => {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border border-gray-300 rounded-xl p-4 shadow-sm"
+            className="border border-gray-300 bg-red-500 rounded-xl p-4 shadow-sm"
           >
             <button
               onClick={() => toggle(index)}
-              className="w-full text-left flex justify-between items-center font-semibold text-lg"
+              className="w-full text-left flex justify-between items-center font-bold text-lg"
             >
               {faq.question}
               <span>{openIndex === index ? "−" : "+"}</span>
             </button>
             {openIndex === index && (
-              <p className="mt-3 text-gray-600">{faq.answer}</p>
+              <p className="mt-3 text-white">{faq.answer}</p>
             )}
           </div>
         ))}

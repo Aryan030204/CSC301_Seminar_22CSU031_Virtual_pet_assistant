@@ -11,10 +11,11 @@ import PetProfiles from "./pages/PetProfiles";
 import ProfileList from "./pages/ProfileList";
 import Faqs from "./pages/Faqs";
 import About from "./pages/About";
+import Vet from "./components/Vet";
 
 function App() {
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between h-screen w-full">
       <Router>
         <Navbar />
         <Routes>
@@ -22,12 +23,13 @@ function App() {
           <Route path="/dogwiki" element={<DogWiki />} />
           <Route path="/catwiki" element={<CatWiki />} />
           <Route path="/foodshop" element={<FoodShop />} />
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/pet/profile/create" element={<PetProfiles/>} />
-          <Route path="/profiles/list" element={<ProfileList/>}/>
-          <Route path="/frequently-asked-questions" element={<Faqs/>} />
-          <Route path="/about-us" element={<About/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/pet/profile/create" element={<PetProfiles />} />
+          <Route path="/profiles/list" element={<ProfileList />} />
+          <Route path="/frequently-asked-questions" element={<Faqs />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/hire-a-vit" element={<Vet />} />
         </Routes>
         <Footer />
       </Router>
