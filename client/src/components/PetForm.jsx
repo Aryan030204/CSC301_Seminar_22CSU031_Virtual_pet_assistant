@@ -2,8 +2,11 @@
 import { useState } from "react";
 import { GoogleGenAI } from "@google/genai";
 import { GEMINI_API_KEY } from "../utils/constants";
+import { TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
+import { Loader } from "lucide-react";
 
 const PetForm = ({ setCure }) => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     weight: "",
     healthIssues: "",
@@ -48,69 +51,84 @@ const PetForm = ({ setCure }) => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       await GenerateCure();
     } catch (error) {
       console.error("Error fetching recommendations", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto p-[3rem] bg-blue-100 shadow-2xl shadow-t rounded-lg z-10">
+    <div className="max-w-md mx-auto p-[3rem] bg-blue-100 shadow-2xl rounded-lg z-10">
       <h2 className="text-xl font-bold mb-4">Pet Health Form</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="number"
+      <div className="space-y-4">
+        <TextField
+          label="Pet Weight (kg)"
           name="weight"
-          placeholder="Pet Weight (kg)"
+          type="number"
           value={formData.weight}
           onChange={handleChange}
-          className="w-full p-2 border rounded-lg shadow-lg"
+          fullWidth
           required
         />
 
-        <select
-          name="healthIssues"
-          value={formData.healthIssues}
-          onChange={handleChange}
-          className="w-full p-2 border rounded-lg shadow-lg"
-          required
-        >
-          <option value="">Select Health Issue</option>
-          <option value="Digestive Issues">Digestive Issues</option>
-          <option value="Skin Problems">Skin Problems</option>
-        </select>
+        <FormControl
+          fullWidth
+          required>
+          <InputLabel>Health Issue</InputLabel>
+          <Select
+            name="healthIssues"
+            value={formData.healthIssues}
+            onChange={handleChange}
+            label="Health Issue">
+            <MenuItem value="Digestive Issues">Digestive Issues</MenuItem>
+            <MenuItem value="Skin Problems">Skin Problems</MenuItem>
+          </Select>
+        </FormControl>
 
-        <select
-          name="healthCharacteristics"
-          value={formData.healthCharacteristics}
-          onChange={handleChange}
-          className="w-full p-2 border rounded-lg shadow-lg"
-          required
-        >
-          <option value="">Select Characteristics</option>
-          <option value="Healthy">Healthy</option>
-          <option value="Sick">Sick</option>
-          <option value="Recovering">Recovering</option>
-        </select>
+        <FormControl
+          fullWidth
+          required>
+          <InputLabel>Health Characteristics</InputLabel>
+          <Select
+            name="healthCharacteristics"
+            value={formData.healthCharacteristics}
+            onChange={handleChange}
+            label="Health Characteristics">
+            <MenuItem value="Healthy">Healthy</MenuItem>
+            <MenuItem value="Sick">Sick</MenuItem>
+            <MenuItem value="Recovering">Recovering</MenuItem>
+          </Select>
+        </FormControl>
 
-        <textarea
+        <TextField
+          label="Describe Symptoms"
           name="symptoms"
-          placeholder="Describe Symptoms"
           value={formData.symptoms}
           onChange={handleChange}
-          className="w-full p-2 border rounded-lg shadow-lg"
+          multiline
+          rows={2}
+          fullWidth
           required
-        ></textarea>
+        />
 
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-lg shadow-lg"
-        >
-          Give Me Cure
+          className={`w-full text-white p-2 rounded-lg shadow-lg transition duration-300 ease-in-out ${
+            loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+          }`}
+          disabled={loading}
+          onClick={handleSubmit}>
+          <span className="flex items-center justify-center gap-2">
+            Give Me Cure
+            {loading && <Loader className="animate-spin" />}
+          </span>
         </button>
-      </form>
+      </div>
     </div>
   );
 };

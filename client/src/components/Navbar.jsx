@@ -14,18 +14,23 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 p-4 z-10">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-        <img src={logo} className="w-[7rem] shadow-white" alt="" />
+        <img
+          src={logo}
+          className="w-[7rem] shadow-white"
+          alt=""
+        />
 
         {/* Hamburger Icon for Mobile */}
         <div className="lg:hidden">
-          <button onClick={toggleMenu} className="text-white">
+          <button
+            onClick={toggleMenu}
+            className="text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-6 h-6"
-            >
+              className="w-4 h-4">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -38,28 +43,42 @@ const Navbar = () => {
 
         {/* Navbar Links for Larger Screens */}
         <div className="hidden lg:flex space-x-4 items-center">
-          <Link to={"/"} className="text-lg text-white font-semibold">
+          <Link
+            to={"/"}
+            className="text-lg text-white font-semibold">
             Home
           </Link>
-          <Link to={"/dogwiki"} className="text-lg text-white font-semibold">
+          <Link
+            to={"/dogwiki"}
+            className="text-lg text-white font-semibold">
             Dog-Wiki
           </Link>
-          <Link to={"/catwiki"} className="text-lg text-white font-semibold">
+          <Link
+            to={"/catwiki"}
+            className="text-lg text-white font-semibold">
             Cat-Wiki
           </Link>
-          <Link to={"/hire-a-vet"} className="text-lg text-white font-semibold">
+          <Link
+            to={"/hire-a-vet"}
+            className="text-lg text-white font-semibold">
             Hire a veterinarian
           </Link>
-          <Link to={"/frequently-asked-questions"} className="text-lg text-white font-semibold">
+          <Link
+            to={"/frequently-asked-questions"}
+            className="text-lg text-white font-semibold">
             FAQs
           </Link>
-          <Link to={"/about-us"} className="text-lg text-white font-semibold">
+          <Link
+            to={"/about-us"}
+            className="text-lg text-white font-semibold">
             About us
           </Link>
           {user ? (
             <Profile />
           ) : (
-            <Link to={"/login"} className="text-lg text-white font-semibold">
+            <Link
+              to={"/login"}
+              className="text-lg text-white font-semibold">
               Login
             </Link>
           )}
@@ -71,14 +90,15 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-10">
           <div className="flex justify-end p-4">
-            <button onClick={toggleMenu} className="mt-7 bg-white">
+            <button
+              onClick={toggleMenu}
+              className="mt-7 bg-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="black"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                className="w-6 h-6"
-              >
+                className="w-6 h-6">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -89,19 +109,27 @@ const Navbar = () => {
             </button>
           </div>
           <div className="flex flex-col items-center space-y-5 bg-white py-5 my-10">
-            <Link to={"/dogwiki"} className="text-lg font-semibold">
+            <Link
+              to={"/dogwiki"}
+              className="text-lg font-semibold">
               DogWiki
             </Link>
-            <Link to={"/catwiki"} className="text-lg font-semibold">
+            <Link
+              to={"/catwiki"}
+              className="text-lg font-semibold">
               CatWiki
             </Link>
-            <Link to={"/hire-a-vet"} className="text-lg font-semibold">
+            <Link
+              to={"/hire-a-vet"}
+              className="text-lg font-semibold">
               Hire a veterinarian
             </Link>
             {user ? (
               <Profile />
             ) : (
-              <Link to={"/login"} className="text-lg text-black font-semibold">
+              <Link
+                to={"/login"}
+                className="text-lg text-black font-semibold">
                 Login
               </Link>
             )}
