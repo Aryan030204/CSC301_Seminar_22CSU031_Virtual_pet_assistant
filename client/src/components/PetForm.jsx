@@ -167,7 +167,6 @@ const PetForm = ({ setCure }) => {
           value={formData.symptoms}
           onChange={handleChange}
           className="w-full p-2 border rounded-lg shadow-lg"
-          required
         ></textarea>
 
         <button
