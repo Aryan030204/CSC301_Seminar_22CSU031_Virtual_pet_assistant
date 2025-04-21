@@ -8,7 +8,8 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3000/api/signup", {
         name,
@@ -22,20 +23,19 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="flex w-full h-full absolute z-0">
-          <img
-            src={wall1}
-            alt="wallpaper"
-            className="w-screen h-[70rem] lg:h-[50rem] absolute -z-1 object-cover"
-          />
-        </div>
-        <div className="flex flex-col justify-normal bg-white p-6 rounded-lg shadow-lg w-[30rem] h-[40rem] z-10">
-          <div>
-            <h2 className="text-4xl font-bold text-center mb-4">Sign Up</h2>
-          </div>
-          <form className="mt-[5rem]">
+    <div className="relative w-full min-h-screen overflow-hidden">
+      {/* Background Image */}
+      <img
+        src={wall1}
+        alt="wallpaper"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      {/* Content Container */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
+        <div className="flex flex-col bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+          <h2 className="text-4xl font-bold text-center mb-6">Sign Up</h2>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700">Name</label>
               <input
@@ -70,7 +70,7 @@ const Signup = () => {
               />
             </div>
             <button
-              onClick={() => handleSubmit()}
+              type="submit"
               className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
             >
               Sign Up
@@ -87,7 +87,7 @@ const Signup = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

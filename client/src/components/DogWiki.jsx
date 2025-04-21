@@ -11,6 +11,7 @@ const DogWiki = () => {
   const [loading, setLoading] = useState(false);
   const [about, setAbout] = useState("");
   const model = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+
   const genAbout = async () => {
     const res = await model.models.generateContent({
       model: "gemini-2.0-flash",
@@ -21,9 +22,7 @@ const DogWiki = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (about) {
-      setAbout("");
-    }
+    if (about) setAbout("");
     if (!query.trim()) return;
 
     setLoading(true);
@@ -48,22 +47,28 @@ const DogWiki = () => {
   };
 
   return (
-    <>
-      <h1 className="p-2 text-yellow-500 shadow-orange-300 shadow-lg z-10 self-center text-7xl font-bold">
-        DOG INFO FINDER
-      </h1>
-      <div className="flex w-full h-full absolute z-0">
+    <div className="relative min-h-screen flex flex-col items-center justify-start">
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10">
         <img
           src={wall1}
           alt="wallpaper"
-          className="w-screen h-[0rem] lg:h-[50rem] absolute -z-1 object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
-      <div className="flex flex-col w-fit justify-center items-center p-6 py-[3rem] h-fit bg-gray-300 self-center my-[10rem] rounded-lg">
+
+      {/* Title */}
+      <h1 className="p-2 text-yellow-500 shadow-orange-300 shadow-lg z-10 self-center text-7xl font-bold mt-6">
+        DOG INFO FINDER
+      </h1>
+
+      {/* Main Card */}
+      <div className="flex flex-col w-fit justify-center items-center p-6 py-[3rem] h-fit bg-gray-300 self-center my-[5rem] rounded-lg shadow-lg z-10">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col justify-evenly gap-[5rem] items-center"
         >
+          {/* Input + Button */}
           <div className="flex items-center gap-5 z-10">
             <TextField
               id="outlined-basic"
@@ -80,13 +85,16 @@ const DogWiki = () => {
               Search
             </button>
           </div>
-          <div className="flex w-full flex-col gap-3 lg:flex-row justify-center h-fit">
-            <div className="flex flex-col">
+
+          {/* Result Section */}
+          <div className="flex w-full flex-col gap-3 lg:flex-row justify-center h-fit min-h-[25rem]">
+            <div className="flex flex-col items-center">
               {loading && (
                 <p className="text-blue-500 font-bold bg-white p-2 z-10">
                   Loading...
                 </p>
               )}
+
               {!loading && data.image_link && (
                 <div className="z-10">
                   <img
@@ -96,6 +104,7 @@ const DogWiki = () => {
                   />
                 </div>
               )}
+
               {!loading && Object.keys(data).length > 0 && (
                 <div className="flex flex-col mt-3 z-10 bg-blue-200 w-full rounded-lg p-2">
                   <div className="flex w-full justify-center items-center gap-4">
@@ -141,15 +150,17 @@ const DogWiki = () => {
                 </div>
               )}
             </div>
+
+            {/* Gemini AI Output */}
             {about && (
-              <div className="flex w-[20rem] max-h-[40rem] h-fit relative bg-yellow-400 p-5 rounded-xl ml-[2rem] shadow-2xl shadow-yellow-200">
+              <div className="flex w-[20rem] max-h-[40rem] h-fit relative bg-yellow-400 p-5 rounded-xl ml-[2rem] shadow-2xl shadow-yellow-200 transition-all duration-500 ease-in-out">
                 <p className="text-lg font-bold">{about}</p>
               </div>
             )}
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
