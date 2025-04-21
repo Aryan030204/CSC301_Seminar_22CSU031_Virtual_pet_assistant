@@ -13,7 +13,7 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/logout",
+        "https://virtual-pet-assistant-server.onrender.com/api/logout",
         {},
         { withCredentials: true }
       );

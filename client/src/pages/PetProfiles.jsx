@@ -33,7 +33,7 @@ const PetProfiles = () => {
 
   const handleCreate = async () => {
     await axios.post(
-      "http://localhost:3000/api/pet/profile/create",
+      "https://virtual-pet-assistant-server.onrender.com/api/pet/profile/create",
       {
         name,
         age,

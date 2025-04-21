@@ -9,13 +9,13 @@ import { Pencil } from "lucide-react";
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([]);
   const getDogProfiles = async () => {
-    const res = await axios.get("http://localhost:3000/api/pet/profiles/all", {
+    const res = await axios.get("https://virtual-pet-assistant-server.onrender.com/api/pet/profiles/all", {
       withCredentials: true,
     });
     setProfiles(res.data.profiles);
   };
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:3000/api/pet/${id}/delete`, {
+    await axios.delete(`https://virtual-pet-assistant-server.onrender.com/api/pet/${id}/delete`, {
       withCredentials: true,
     });
     toast.success("profile deleted successfully");
