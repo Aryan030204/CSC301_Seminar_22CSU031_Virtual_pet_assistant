@@ -56,7 +56,7 @@ const DogWiki = () => {
         <img
           src={wall1}
           alt="wallpaper"
-          className="w-screen h-[60rem] lg:h-[50rem] absolute -z-1 object-cover"
+          className="w-screen h-[0rem] lg:h-[50rem] absolute -z-1 object-cover"
         />
       </div>
       <div className="flex flex-col w-fit justify-center items-center p-6 py-[3rem] h-fit bg-gray-300 self-center my-[10rem] rounded-lg">
