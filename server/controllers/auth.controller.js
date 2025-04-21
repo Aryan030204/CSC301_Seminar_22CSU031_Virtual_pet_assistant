@@ -5,6 +5,13 @@ const bcrypt = require("bcryptjs");
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
+    }
+
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -21,22 +28,29 @@ const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "None",
-      secure: true,
+      secure: true, // Ensure this works with HTTPS
     });
 
-    res.status(200).json({ message: "Login successful", user });
+    // Returning the user without password
+    const { password: userPassword, ...userData } = user.toObject();
+    res.status(200).json({ message: "Login successful", user: userData });
   } catch (err) {
     console.log(err);
-    
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
 
 const signup = async (req, res) => {
   try {
-    const { emailId, password } = req.body;
+    const { email, password } = req.body;
 
-    const existingUser = await User.findOne({ emailId });
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
+    }
+
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already exists" });
     }
@@ -60,13 +74,14 @@ const signup = async (req, res) => {
   }
 };
 
-const logout = async (req,res) => {
+const logout = async (req, res) => {
   try {
     res.clearCookie("token");
     res.status(200).json({ message: "Logged out successfully" });
-  }catch(err){
+  } catch (err) {
     console.log(err);
+    res.status(500).json({ message: "Failed to logout", error: err.message });
   }
-}
+};
 
 module.exports = { login, signup, logout };

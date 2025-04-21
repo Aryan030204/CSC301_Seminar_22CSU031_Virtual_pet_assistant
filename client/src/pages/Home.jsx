@@ -6,7 +6,7 @@ import { useState } from "react";
 const Home = () => {
   const [cure, setCure] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [bg, setBg] = useState("white");
+  const [bg, setBg] = useState("");
 
   const colors = ["blue", "yellow", "green", "red", "purple", "orange"];
 
@@ -58,7 +58,7 @@ const Home = () => {
                 {cure.split("*")}
               </ol>
             ) : (
-              <h1 className="text-lg font-semibold text-black">
+              <h1 className="text-lg font-semibold hidden text-black">
                 Cure will appear here...
               </h1>
             )}

@@ -4,8 +4,6 @@ import catImg from "../assets/cat.jpg";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import dog1 from "../assets/dog1.png";
-import cat1 from "../assets/cat1.png";
 
 const PetProfiles = () => {
   const [name, setName] = useState("");
@@ -16,7 +14,7 @@ const PetProfiles = () => {
   const [color, setColor] = useState("");
 
   const dogBreeds = [
-    "Labrador Retriever",
+    "Labrador",
     "German Shepherd",
     "Golden Retriever",
     "Poodle",
@@ -68,14 +66,12 @@ const PetProfiles = () => {
 
   return (
     <>
-    <div className="w-full flex justify-between p-1 absolute top-[27rem]">
-      {/* <img src={dog1} className="relative z-[-1] right-[10rem] w-[50rem]" /> */}
-      {/* <img src={cat1} className="relative z-[-1] left-1 bottom-32 h-[47rem] w-[35rem]" /> */}
-    </div>
+      <div className="w-full flex justify-between p-1 absolute top-[27rem]"></div>
       <form
         onSubmit={handleSubmit}
         className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4 md:mt-10 mt-6 w-[90%]"
       >
+        <ToastContainer/>
         <h2 className="text-2xl font-bold text-center">
           Create new Pet Profile
         </h2>
@@ -90,7 +86,6 @@ const PetProfiles = () => {
             className="rounded-full border-2 w-32 place-self-center"
           />
         )}
-        <ToastContainer />
 
         <div className="flex flex-col">
           <label className="mb-1">Name</label>

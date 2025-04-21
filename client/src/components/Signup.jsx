@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import wall1 from "../assets/wall1.jpg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -16,9 +18,10 @@ const Signup = () => {
         email,
         password,
       });
-      console.log(res);
+      toast.success("Signup successful!");
     } catch (err) {
       console.log(err);
+      toast.error("Signup failed. Please try again.");
     }
   };
 
@@ -30,6 +33,7 @@ const Signup = () => {
         alt="wallpaper"
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
+      <ToastContainer />
 
       {/* Content Container */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
