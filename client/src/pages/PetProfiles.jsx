@@ -46,7 +46,7 @@ const PetProfiles = () => {
         withCredentials: true,
       }
     );
-    toast.success("dog profile created successfully !");
+    toast.success("pet profile created successfully !");
   };
 
   const colors = ["black", "white", "brown", "red", "yellow", "other"];
