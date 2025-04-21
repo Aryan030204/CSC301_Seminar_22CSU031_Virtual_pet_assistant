@@ -57,7 +57,7 @@ const PetForm = ({ setCure }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-[3rem] bg-blue-100 shadow-2xl shadow-t rounded-lg z-10">
+    <div className="max-w-md mx-auto p-[3rem] bg-blue-100 shadow-2xl shadow-t rounded-lg relative z-0">
       <h2 className="text-xl font-bold mb-4">Pet Health Form</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input

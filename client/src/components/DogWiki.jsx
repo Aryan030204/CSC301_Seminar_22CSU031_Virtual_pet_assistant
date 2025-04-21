@@ -21,7 +21,7 @@ const DogWiki = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if(about) {
+    if (about) {
       setAbout("");
     }
     if (!query.trim()) return;
@@ -52,8 +52,14 @@ const DogWiki = () => {
       <h1 className="p-2 text-yellow-500 shadow-orange-300 shadow-lg z-10 self-center text-7xl font-bold">
         DOG INFO FINDER
       </h1>
+      <div className="flex w-full h-full absolute z-0">
+        <img
+          src={wall1}
+          alt="wallpaper"
+          className="w-screen h-[60rem] lg:h-[50rem] absolute -z-1 object-cover"
+        />
+      </div>
       <div className="flex flex-col w-fit justify-center items-center p-6 py-[3rem] h-fit bg-gray-300 self-center my-[10rem] rounded-lg">
-        <img src={wall1} className="z-1 absolute" />
         <form
           onSubmit={handleSubmit}
           className="flex flex-col justify-evenly gap-[5rem] items-center"
@@ -74,7 +80,7 @@ const DogWiki = () => {
               Search
             </button>
           </div>
-          <div className="flex w-full h-fit">
+          <div className="flex w-full flex-col gap-3 lg:flex-row justify-center h-fit">
             <div className="flex flex-col">
               {loading && (
                 <p className="text-blue-500 font-bold bg-white p-2 z-10">
@@ -135,9 +141,11 @@ const DogWiki = () => {
                 </div>
               )}
             </div>
-            <div className="flex w-[20rem] max-h-[40rem] h-fit relative bg-yellow-400 p-5 rounded-xl ml-[2rem] shadow-2xl shadow-yellow-200">
-              {about && <p className="text-lg font-bold">{about}</p>}
-            </div>
+            {about && (
+              <div className="flex w-[20rem] max-h-[40rem] h-fit relative bg-yellow-400 p-5 rounded-xl ml-[2rem] shadow-2xl shadow-yellow-200">
+                <p className="text-lg font-bold">{about}</p>
+              </div>
+            )}
           </div>
         </form>
       </div>

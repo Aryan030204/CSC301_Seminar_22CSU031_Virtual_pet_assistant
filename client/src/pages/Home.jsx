@@ -8,11 +8,13 @@ const Home = () => {
 
   return (
     <>
-      <img
-        src={wall1}
-        alt="wallpaper"
-        className="w-screen h-[50rem] absolute -z-1 object-cover"
-      />
+      <div className="flex w-full h-full absolute z-0">
+        <img
+          src={wall1}
+          alt="wallpaper"
+          className="w-screen h-[70rem] lg:h-[50rem] absolute -z-1 object-cover"
+        />
+      </div>
       <div className="relative z-1 flex flex-col gap-16 p-10 items-center w-screen h-full">
         <div className="flex w-full h-fit justify-center items-center gap-2">
           <Cat color="red" size={40} />
@@ -21,11 +23,11 @@ const Home = () => {
           </h1>
           <Dog color="green" size={40} />
         </div>
-        <div className="flex justify-evenly gap-[4rem] items-center">
+        <div className="flex justify-evenly gap-[4rem] flex-col lg:flex-row items-center">
           {/* Pass setCure to PetForm */}
           <PetForm setCure={setCure} />
 
-          <div className="flex flex-col w-[40rem] min-h-[20rem] p-10 items-start justify-center relative z-2 bg-white shadow-2xl rounded-xl overflow-auto">
+          <div className="flex flex-col w-[30rem] lg:w-[40rem] min-h-[20rem] p-10 items-start justify-center relative z-2 bg-white shadow-2xl rounded-xl overflow-auto">
             {cure ? (
               <ol className="list-decimal list-inside space-y-2 text-lg font-medium text-gray-700">
                 {cure.split("*")}

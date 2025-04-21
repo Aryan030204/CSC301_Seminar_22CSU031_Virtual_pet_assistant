@@ -12,9 +12,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-900 p-4 z-10">
+    <nav className="bg-gray-900 p-4 z-50">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-        <img src={logo} className="w-[7rem] shadow-white" alt="" />
+        <Link to={"/"}>
+          <img src={logo} className="w-[7rem] shadow-white" alt="" />
+        </Link>
 
         {/* Hamburger Icon for Mobile */}
         <div className="lg:hidden">
@@ -50,7 +52,10 @@ const Navbar = () => {
           <Link to={"/hire-a-vet"} className="text-lg text-white font-semibold">
             Hire a veterinarian
           </Link>
-          <Link to={"/frequently-asked-questions"} className="text-lg text-white font-semibold">
+          <Link
+            to={"/frequently-asked-questions"}
+            className="text-lg text-white font-semibold"
+          >
             FAQs
           </Link>
           <Link to={"/about-us"} className="text-lg text-white font-semibold">

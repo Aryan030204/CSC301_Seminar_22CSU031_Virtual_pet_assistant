@@ -65,8 +65,14 @@ const CatWiki = () => {
       <h1 className="p-2 text-purple-600 shadow-purple-300 shadow-lg z-10 self-center text-7xl font-bold">
         CAT INFO FINDER
       </h1>
+      <div className="flex w-full h-full absolute z-0">
+        <img
+          src={wall1}
+          alt="wallpaper"
+          className="w-screen max-h-[120rem] lg:h-[90rem] absolute -z-1 object-cover"
+        />
+      </div>
       <div className="flex flex-col w-fit justify-center items-center p-6 py-[3rem] h-fit bg-gray-300 self-center my-[10rem] rounded-lg">
-        <img src={wall1} className="z-1 absolute" />
         <form
           onSubmit={handleSubmit}
           className="flex flex-col justify-evenly gap-[5rem] items-center"
@@ -87,7 +93,7 @@ const CatWiki = () => {
               Search
             </button>
           </div>
-          <div className="flex w-full h-fit">
+          <div className="flex w-full flex-col gap-3 lg:flex-row items-center justify-center h-fit">
             <div className="flex flex-col">
               {loading && (
                 <p className="text-blue-500 font-bold bg-white p-2 z-10">
@@ -98,7 +104,7 @@ const CatWiki = () => {
                 <div className="z-10">
                   <img
                     src={data.image}
-                    className="w-[25rem] rounded-xl shadow-xl"
+                    className="w-[25rem] place-self-center rounded-xl shadow-xl"
                     alt="Cat"
                   />
                 </div>
@@ -138,9 +144,11 @@ const CatWiki = () => {
                 </div>
               )}
             </div>
-            <div className="flex w-[20rem] max-h-[40rem] h-fit relative bg-purple-400 p-5 rounded-xl ml-[2rem] shadow-2xl shadow-purple-200">
-              {about && <p className="text-lg font-bold">{about}</p>}
-            </div>
+            {about && (
+              <div className="flex w-[20rem] max-h-[40rem] h-fit relative bg-purple-400 p-5 rounded-xl ml-[2rem] shadow-2xl shadow-purple-200">
+                <p className="text-lg font-bold">{about}</p>
+              </div>
+            )}
           </div>
         </form>
       </div>

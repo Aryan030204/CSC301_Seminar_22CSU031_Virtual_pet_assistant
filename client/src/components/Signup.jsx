@@ -24,7 +24,13 @@ const Signup = () => {
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <img src={wall1} className="absolute z-1" />
+        <div className="flex w-full h-full absolute z-0">
+          <img
+            src={wall1}
+            alt="wallpaper"
+            className="w-screen h-[70rem] lg:h-[50rem] absolute -z-1 object-cover"
+          />
+        </div>
         <div className="flex flex-col justify-normal bg-white p-6 rounded-lg shadow-lg w-[30rem] h-[40rem] z-10">
           <div>
             <h2 className="text-4xl font-bold text-center mb-4">Sign Up</h2>
