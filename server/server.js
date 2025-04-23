@@ -6,14 +6,13 @@ const cookieParser = require("cookie-parser");
 const userRouter = require("./routes/user.routes.js");
 const petRouter = require("./routes/pet.routes.js");
 
-require("dotenv").config();
 connectDB();
 
 const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://virtual-pet-assistant-client.onrender.com",
+    origin: process.env.CLIENT_PRODUCTION_ORIGIN,
     credentials: true, // allow cookies
   })
 );

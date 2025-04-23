@@ -4,6 +4,7 @@ import axios from "axios";
 import wall1 from "../assets/wall1.jpg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SERVER_PRODUCTION_ORIGIN } from "../utils/constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://virtual-pet-assistant-server.onrender.com/api/login",
+        SERVER_PRODUCTION_ORIGIN+"/api/login",
         { email, password },
         { withCredentials: true }
       );

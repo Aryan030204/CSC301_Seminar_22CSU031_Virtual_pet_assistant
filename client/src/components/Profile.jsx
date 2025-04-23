@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
+import { SERVER_PRODUCTION_ORIGIN } from "../utils/constants";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "https://virtual-pet-assistant-server.onrender.com/api/logout",
+        SERVER_PRODUCTION_ORIGIN+"/api/logout",
         {},
         { withCredentials: true }
       );

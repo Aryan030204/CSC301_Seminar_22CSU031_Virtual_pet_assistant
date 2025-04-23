@@ -26,17 +26,17 @@ const Footer = () => {
         {/* Right Section: Contact Info */}
         <div className="text-right">
           <p className="mb-2">
-            <span className="mr-2">📍</span> 8502 Preston Rd. Inglewood, Maine 98380, USA
+            <span className="mr-2">📍</span> 346 1st Floor, Joshi Road, Delhi
           </p>
           <p className="mb-2">
-            <span className="mr-2">✉️</span> support@rareblocks.xyz
+            <span className="mr-2">✉️</span> support@seminar.xyz
           </p>
         </div>
       </div>
 
       {/* Copyright Notice */}
       <div className="text-right text-sm mt-6">
-        <p>© Copyright 2021, All Rights Reserved</p>
+        <p>© Copyright 2025, All Rights Reserved</p>
       </div>
     </footer>
   );

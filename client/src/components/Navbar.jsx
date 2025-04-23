@@ -50,7 +50,7 @@ const Navbar = () => {
             Cat-Wiki
           </Link>
           <Link to={"/hire-a-vet"} className="text-lg text-white font-semibold">
-            Hire a veterinarian
+          Veterinarian near me
           </Link>
           <Link
             to={"/frequently-asked-questions"}

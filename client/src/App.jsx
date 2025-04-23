@@ -6,7 +6,6 @@ import DogWiki from "./components/DogWiki";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import FoodShop from "./components/FoodShop";
 import PetProfiles from "./pages/PetProfiles";
 import ProfileList from "./pages/ProfileList";
 import Faqs from "./pages/Faqs";
@@ -22,7 +21,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dogwiki" element={<DogWiki />} />
           <Route path="/catwiki" element={<CatWiki />} />
-          <Route path="/foodshop" element={<FoodShop />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/pet/profile/create" element={<PetProfiles />} />

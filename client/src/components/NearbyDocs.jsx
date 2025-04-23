@@ -2,10 +2,10 @@ import DocCard from "./DocCard";
 
 const NearbyDocs = () => {
   const arr = [
-    { name: "Dr. Raj Pathak", address: "33, Wall Street, New York" },
-    { name: "Dr. Susan Miller", address: "12, Oak Avenue, San Francisco" },
-    { name: "Dr. John Doe", address: "56, Pine Road, Los Angeles" },
-    { name: "Dr. Emma Davis", address: "88, Maple Street, Chicago" },
+    { name: "Dr. Raj Pathak", address: "3Vikram Nagar, Velodrome Road, New Delhi" },
+    { name: "Dr. 	Jatin Batta", address: "Barakhamba Rd, Connaught Place, New Delhi" },
+    { name: "Dr. Yamini Mathur", address: "	Plot No 388, Udyog vihar Phase-3, Gurugram" },
+    { name: "Dr. Ritika Jawahar Thaker", address: "Mehrauli Rd, DLF Colony, Sector 14, Gurugram" },
   ];
 
   return (

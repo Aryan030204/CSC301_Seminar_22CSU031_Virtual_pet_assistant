@@ -4,6 +4,7 @@ import catImg from "../assets/cat.jpg";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
+import { SERVER_PRODUCTION_ORIGIN } from "../utils/constants";
 
 const PetProfiles = () => {
   const [name, setName] = useState("");
@@ -33,7 +34,7 @@ const PetProfiles = () => {
 
   const handleCreate = async () => {
     await axios.post(
-      "https://virtual-pet-assistant-server.onrender.com/api/pet/profile/create",
+      SERVER_PRODUCTION_ORIGIN + "/api/pet/profile/create",
       {
         name,
         age,
@@ -71,7 +72,7 @@ const PetProfiles = () => {
         onSubmit={handleSubmit}
         className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4 md:mt-10 mt-6 w-[90%]"
       >
-        <ToastContainer/>
+        <ToastContainer />
         <h2 className="text-2xl font-bold text-center">
           Create new Pet Profile
         </h2>

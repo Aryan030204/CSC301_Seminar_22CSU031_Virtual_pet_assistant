@@ -5,17 +5,18 @@ import catImg from "../assets/cat.jpg";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { Pencil } from "lucide-react";
+import { SERVER_PRODUCTION_ORIGIN } from "../utils/constants";
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([]);
   const getDogProfiles = async () => {
-    const res = await axios.get("https://virtual-pet-assistant-server.onrender.com/api/pet/profiles/all", {
+    const res = await axios.get(SERVER_PRODUCTION_ORIGIN+"/api/pet/profiles/all", {
       withCredentials: true,
     });
     setProfiles(res.data.profiles);
   };
   const handleDelete = async (id) => {
-    await axios.delete(`https://virtual-pet-assistant-server.onrender.com/api/pet/${id}/delete`, {
+    await axios.delete(SERVER_PRODUCTION_ORIGIN+`/api/pet/${id}/delete`, {
       withCredentials: true,
     });
     toast.success("profile deleted successfully");
